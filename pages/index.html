@@ -6,12 +6,22 @@
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <link href="../dist/output.css" rel="stylesheet">
 </head>
-<body>
-    <h1 class="text-9xl">Hello World!</h1>
-    <p>
-        We are using Node.js <span id="node-version"></span>,
-        Chromium <span id="chrome-version"></span>,
-        and Electron <span id="electron-version"></span>.
-    </p>
+<body class="font-Raleway">
+    <div class="grid grid-rows-3 md:grid-rows-12 gap-4">
+        <div class="col-span-1 md:col-span-12"></div>
+        <div class="col-span-1 md:col-span-4"></div>
+        <div class="italic text-9xl hero-content text-center text-primary md:col-span-4 font-bold">
+            CLASSY
+        </div>
+        <div class="col-span-1 md:col-span-4"></div>
+        <div class="col-span-1 md:col-span-2"></div>
+        <div class="grid grid-cols-8 md:col-span-8 gap-4">
+            <span class="col-span-2"><a href="./studentPage.html"><button class="btn-primary p-3 md:p-5 border-primary-focus border-4 rounded-3xl hover:rounded-none hover:text-white delay-75 duration-500 w-full">Student Sign-in</button></a></span>
+            <span class="col-span-2"><a href="./parentPage.html"><button class="btn-primary p-3 md:p-5 border-primary-focus border-4 rounded-3xl hover:rounded-none hover:text-white delay-75 duration-500 w-full">Parent Sign-in</button></a></span>
+            <span class="col-span-2"><a href="./teacherPage.html"><button class="btn-primary p-3 md:p-5 border-primary-focus border-4 rounded-3xl hover:rounded-none hover:text-white delay-75 duration-500 w-full">Teacher Sign-in</button></a></span>
+            <span class="col-span-2"><a href="./adminPage.html"><button class="btn-primary p-3 md:p-5 border-primary-focus border-4 rounded-3xl hover:rounded-none hover:text-white delay-75 duration-500 w-full">Admin Sign-in</button></a></span>
+        </div>
+        <div class="col-span-1 md:col-span-2"></div>
+    </div>
 </body>
 </html>
