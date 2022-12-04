@@ -1,0 +1,62 @@
+{
+  "teacher": {
+    "attendance": true,
+    "attendanceRequest": false,
+    "college": false,
+    "fees": false,
+    "grades": true,
+    "portfolio": false,
+    "rank": true,
+    "referrals": true,
+    "releaseForms": false,
+    "requestRecommendations": false,
+    "requestTranscripts": false,
+    "schedule": false,
+    "studentInfo": false
+  },
+  "parent": {
+    "attendance": true,
+    "attendanceRequest": true,
+    "college": false,
+    "fees": true,
+    "grades": true,
+    "portfolio": true,
+    "rank": true,
+    "referrals": true,
+    "releaseForms": true,
+    "requestRecommendations": false,
+    "requestTranscripts": false,
+    "schedule": true,
+    "studentInfo": true
+  },
+  "student": {
+    "attendance": true,
+    "attendanceRequest": false,
+    "college": true,
+    "fees": false,
+    "grades": true,
+    "portfolio": true,
+    "rank": true,
+    "referrals": false,
+    "releaseForms": false,
+    "requestRecommendations": true,
+    "requestTranscripts": true,
+    "schedule": true,
+    "studentInfo": true
+  },
+  "admin": {
+    "attendance": true,
+    "attendanceRequest": true,
+    "college": true,
+    "fees": true,
+    "grades": true,
+    "portfolio": true,
+    "rank": true,
+    "referrals": true,
+    "releaseForms": true,
+    "requestRecommendations": true,
+    "requestTranscripts": true,
+    "schedule": true,
+    "studentInfo": true
+  }
+}
