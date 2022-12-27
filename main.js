@@ -1,6 +1,6 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
-const db = require('./src/db.js');
+const db = require('./db/classydb.js');
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -18,12 +18,12 @@ function createWindow() {
 // test database connection and add test user
 function dbTest() {
   const client = new db.ClassyDB();
-  client.insertUser("student", "test@example.com", "Test", "User", "password");
+  client.insertUser("admin", "admin", "admin", "2020-01-01", "admin", "admin", "admin");
 }
 
 app.whenReady().then(() => {
   createWindow()
-  
+
   dbTest();
 
   app.on('activate', () => {
