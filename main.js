@@ -1,7 +1,8 @@
 const { app, BrowserWindow } = require('electron')
 const path = require('path')
+const db = require('./db/classydb.js');
 
-function createWindow () {
+function createWindow() {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
@@ -15,8 +16,16 @@ function createWindow () {
   win.maximize()
 }
 
+// test database connection and add test user
+function dbTest() {
+  const client = new db.ClassyDB();
+  client.insertUser("admin", "admin", "admin", "2020-01-01", "admin", "admin", "admin");
+}
+
 app.whenReady().then(() => {
   createWindow()
+
+  dbTest();
 
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) {
