@@ -13,21 +13,28 @@ module.exports = {
   },
   plugins: [require("@tailwindcss/typography"), require("daisyui")],
   daisyui: {
+    styled: true,
+    base: true,
+    utils: true,
+    logs: false,
+    rtl: false,
+    prefix: "",
+    darkTheme: "dark",
     themes: [
       {
-        theme1: { 
-        "primary": "#00A5C8",
-        "secondary": "#7767c1",
-        "accent": "#8d7da6",
-        "neutral": "#fcf7f1",
-        "base-100": "#e0f2fe",
-        "info": "#339BEB",
-        "success": "#2EDCAA",
-        "warning": "#D17E0A",
-        "error": "#F73C2B",
+        mytheme: 
+        {
+          "primary": "#fbc96e",
+          "secondary": "#d87235",
+          "accent": "#06a6c8",
+          "neutral": "#075d79",
+          "base-100": "#9eeff3",
+          "info": "#3ABFF8",
+          "success": "#36D399",
+          "warning": "#FBBD23",
+          "error": "#F87272",
         },
-      },
-      
+      }
     ],
   },
 }

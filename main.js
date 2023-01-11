@@ -11,7 +11,8 @@ function createWindow () {
     autoHideMenuBar: true,
   })
 
-  win.loadFile('./pages/index.html')
+  win.loadFile('./pages/index.html'),
+  win.maximize()
 }
 
 app.whenReady().then(() => {
