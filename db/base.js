@@ -3,6 +3,11 @@
 const config = require("../config.json");
 const { Client } = require("pg");
 
+const { User } = require("../models/user");
+const { Student } = require("../models/student");
+const { Teacher } = require("../models/teacher");
+const { Parent } = require("../models/parent");
+
 class BaseDB {
   // connect to the database
   connect() {
@@ -35,31 +40,42 @@ class BaseDB {
 
   // get a generic user from the database
   async getUser(email) {
-    return await this.execute(`SELECT * FROM users WHERE email = $1`, [email]);
+    results = this.execute(`SELECT * FROM users WHERE email = $1`, [email]);
+    if (results.rows.length == 0) {
+      return null;
+    }
+
+    account_type = results.rows[0].account_type;
+    if (account_type == "student") {
+      return new Student(results.rows[0]);
+    } else if (account_type == "teacher") {
+      return new Teacher(results.rows[0]);
+    } else if (account_type == "parent") {
+      return new Parent(results.rows[0]);
+    } else {
+      return new User(results.rows[0]);
+    }
   }
 
   // login a generic user using email and password
-  async login(email, password) {
-    user = await this.getUser(email);
-    if (user.rows.length == 0) {
-      return false;
-    }
-    if (user.rows[0].password != password) {
-      return false;
-    }
+  // async login(email, password) {
+  //   user = await this.getUser(email);
 
-    data = user.rows[0];
+  //   // check password
+  //   if (password != user.password) {
+  //     return false;
+  //   }
 
-    if (data.account_type == "admin") {
-      return "adminPage.html";
-    } else if (data.account_type == "parent") {
-      return "parentPage.html";
-    } else if (data.account_type == "teacher") {
-      return "teacherPage.html";
-    } else {
-      return "studentPage.html";
-    }
-  }
+  //   if (user.account_type == "admin") {
+  //     return "adminPage.html";
+  //   } else if (user.account_type == "parent") {
+  //     return "parentPage.html";
+  //   } else if (user.account_type == "teacher") {
+  //     return "teacherPage.html";
+  //   } else {
+  //     return "studentPage.html";
+  //   }
+  // }
 }
 
 module.exports = {
