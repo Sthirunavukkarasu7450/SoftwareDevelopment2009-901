@@ -29,13 +29,21 @@ function createWindow() {
   win.loadFile("pages/index.html");
 
   // Load the login page when user is unauthenticated.
-  ipcMain.on("unauthenticated", (event) => {
+  ipcMain.on("unauthenticated", async (event) => {
     win.loadFile("pages/index.html");
   });
 
   // Load our app when user is authenticated.
-  ipcMain.on("authenticated", async (event) => {
-    win.loadFile("pages/adminPage.html");
+  ipcMain.on("authenticated", async (event, user) => {
+    if (user.account_type == "student") {
+      win.loadFile("pages/studentPage.html");
+    } else if (user.account_type == "teacher") {
+      win.loadFile("pages/teacherPage.html");
+    } else if (user.account_type == "parent") {
+      win.loadFile("pages/parentPage.html");
+    } else {
+      win.loadFile("pages/adminPage.html");
+    }
   });
 
   ipcMain.handle("showDialog", (e, message) => {

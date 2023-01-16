@@ -60,16 +60,9 @@ class BaseDB {
   // login a generic user using email and password
   async login(email, password) {
     let user = await this.getUser(email);
-
-    if (user == null) {
-      return false;
+    if (user && user.password == password) {
+      return user;
     }
-
-    if (password != user.password) {
-      return false;
-    }
-
-    return true;
   }
 }
 

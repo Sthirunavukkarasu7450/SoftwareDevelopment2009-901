@@ -12,9 +12,11 @@ login.addEventListener("submit", async (event) => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  if (await client.login(email, password) == false) {
+  let user = await client.login(email, password);
+
+  if (user == null) {
     ipcRenderer.invoke("showDialog", "Invalid credentials");
   } else {
-    ipcRenderer.send("authenticated");
+    ipcRenderer.send("authenticated", user);
   }
 });
