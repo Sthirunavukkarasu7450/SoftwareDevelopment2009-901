@@ -47,11 +47,17 @@ class BaseDB {
 
     let account_type = results.rows[0].account_type;
     if (account_type == "student") {
-      return new Student(results.rows[0]);
+      // get additional student attributes
+      let extra = await this.getStudent(results.rows[0].user_id);
+      return new Student({ ...results.rows[0], ...extra });
     } else if (account_type == "teacher") {
-      return new Teacher(results.rows[0]);
+      // get additional teacher attributes
+      let extra = await this.getTeacher(results.rows[0].user_id);
+      return new Teacher({ ...results.rows[0], ...extra });
     } else if (account_type == "parent") {
-      return new Parent(results.rows[0]);
+      // get additional parent attributes
+      let extra = await this.getParent(results.rows[0].user_id);
+      return new Parent({ ...results.rows[0], ...extra });
     } else {
       return new User(results.rows[0]);
     }

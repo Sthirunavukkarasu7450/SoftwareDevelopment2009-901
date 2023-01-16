@@ -19,6 +19,15 @@ class StudentDB extends BaseDB {
       [student_id, grade, grade_principal_id, counselor_id, homeroom_teacher_id, course_ids, schedule, portfolio]
     );
   }
+
+  // get additional student attributes
+  async getStudent(student_id) {
+    let results = await this.execute(`SELECT * FROM students WHERE student_id = $1`, [student_id]);
+    if (results.rows.length == 0) {
+      return null;
+    }
+    return results.rows[0];
+  }
 }
 
 module.exports = {
