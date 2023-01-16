@@ -35,6 +35,9 @@ function createWindow() {
 
   // Load our app when user is authenticated.
   ipcMain.on("authenticated", async (event, user) => {
+    // store user in local storage
+    win.webContents.executeJavaScript(`localStorage.setItem("user", JSON.stringify(${JSON.stringify(user)}));`);
+
     if (user.account_type == "student") {
       win.loadFile("pages/studentPage.html");
     } else if (user.account_type == "teacher") {
