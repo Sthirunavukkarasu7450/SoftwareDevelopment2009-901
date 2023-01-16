@@ -32,6 +32,34 @@ class BaseDB {
       [account_type, last_name, first_name, birthday, address, email, password]
     );
   }
+
+  // get a generic user from the database
+  async getUser(email) {
+    return await this.execute(`SELECT * FROM users WHERE email = $1`, [email]);
+  }
+
+  // login a generic user using email and password
+  async login(email, password) {
+    user = await this.getUser(email);
+    if (user.rows.length == 0) {
+      return false;
+    }
+    if (user.rows[0].password != password) {
+      return false;
+    }
+
+    data = user.rows[0];
+
+    if (data.account_type == "admin") {
+      return "adminPage.html";
+    } else if (data.account_type == "parent") {
+      return "parentPage.html";
+    } else if (data.account_type == "teacher") {
+      return "teacherPage.html";
+    } else {
+      return "studentPage.html";
+    }
+  }
 }
 
 module.exports = {
