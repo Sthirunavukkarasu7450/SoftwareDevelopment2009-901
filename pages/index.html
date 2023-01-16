@@ -1,50 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="mytheme">
-    <head>
-        <meta charset="UTF-8">
-        <title>Classy</title>
-        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-        <link href="../dist/output.css" rel="stylesheet">
-        <script src="../pages.js"></script>
-    </head>
-    <body class="font-Raleway">
-        <div class="grid grid-rows-3 md:grid-rows-12 gap-4">
-            <div class="col-span-1 md:col-span-12"></div>
-            <div class="col-span-1 md:col-span-4"></div>
-            <div class="italic text-9xl hero-content text-center text-primary md:col-span-4 font-bold">
-                CLASSY
-            </div>
-            <div class="col-span-1 md:col-span-4"></div>
-            <div class="col-span-1 md:col-span-2"></div>
-            <div class="grid grid-cols-3 md:col-span-8 gap-4 border-4 border-primary-focus rounded-3xl bg-base-content">
-                <div class="col-span-1 md:col-span-2"></div>
-                <form method="post" class="w-full text-center col-span-1 md:col-span-4">
-                    <div class="text-6xl text-primary text-center w-full">
-                        Sign-In
-                    </div>
-                    <div class="grid grid-cols-6 md:grid-cols-12">
-                        <div class="col-span-1 md:col-span-2"></div>
-                        <div class="text-3xl text-neutral-content w-full p-3 md:p-5 col-span-2 md:col-span-4">
-                            <label for="email" class="text-right">
-                                Email:
-                            </label>
-                            <input type="email" name="email" id="email" required>
-                        </div>
-                        <div class="text-3xl text-neutral-content w-full p-3 md:p-5 col-span-2 md:col-span-4">
-                            <label for="password" class="text-right">
-                                Password:
-                            </label>
-                            <input type="password" name="password" id="password" required>
-                        </div>
-                        <div class="col-span-1 md:col-span-2"></div>
-                    </div>
-                    <input type="submit" onclick="validate()" name="submit" value="Submit" class="input-primary text-2xl text-primary-content border-2 border-secondary rounded-full p-2 md:p-3 bg-base-100">
-                </form>
-                <div class="col-span-1 md:col-span-2"></div>
-            </div>
-            <div class="col-span-1 md:col-span-2"></div>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Classy</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link href="../dist/output.css" rel="stylesheet" />
+    <!-- <script src="../pages.js"></script> -->
+</head>
+<body class="font-Raleway">
+    <div class="grid grid-rows-3 md:grid-rows-12 gap-4">
+        <div class="col-span-1 md:col-span-12"></div>
+        <div class="col-span-1 md:col-span-4"></div>
+        <div class="italic text-9xl hero-content text-center text-primary md:col-span-4 font-bold">CLASSY</div>
+        <div class="col-span-1 md:col-span-4"></div>
+        <div class="col-span-1 md:col-span-2"></div>
+    </div>
 
-        <script src="../scripts/login.js"></script>
-    </body>
+      <div class="grid grid-cols-8 md:col-span-8 gap-4 border-4 border-primary-focus rounded-3xl bg-base-content p-3 md:p-5">
+        <form id="login" class="w-full text-center col-span-8 p-3 md:p-5">
+          <div class="text-6xl text-primary text-center w-full">Sign-In</div>
+          <div class="grid grid-cols-12">
+            <div class="text-3xl text-neutral-content w-full p-3 md:p-5 col-span-12 grid grid-cols-12">
+                <label for="email" class="text-right col-span-2 p-3 md:p-5">
+                    Email:
+                </label>
+                <input type="email" name="email" id="email" required class="col-span-10 w-full rounded-2xl">
+            </div>
+            <div class="text-3xl text-neutral-content w-full p-3 md:p-5 col-span-12 grid grid-cols-12">
+                <label for="password" class="text-right col-span-2 p-3 md:p-5">
+                    Password:
+                </label>
+                <input type="password" name="password" id="password" required class="col-span-10 w-full rounded-2xl">
+            </div>
+        </div>
+          <input type="submit" value="" />
+        </form>
+      </div>
+      <div class="col-span-1 md:col-span-2"></div>
+  </body>
+
+  <script src="../js/login.js"></script>
 </html>

@@ -1,6 +1,7 @@
 // database for school operations, inherits from base class
 
 const { BaseDB } = require("./base");
+const { School } = require("../models/school");
 
 class SchoolDB extends BaseDB {
   // add a school to the database
@@ -11,6 +12,15 @@ class SchoolDB extends BaseDB {
       phone,
       principal_id,
     ]);
+  }
+
+  // get a school from the database
+  async getSchool(name) {
+    results = this.execute(`SELECT * FROM schools WHERE name = $1`, [name]);
+    if (results.rows.length == 0) {
+      return null;
+    }
+    return new School(results.rows[0]);
   }
 }
 
