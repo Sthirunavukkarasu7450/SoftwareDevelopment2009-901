@@ -40,12 +40,12 @@ class BaseDB {
 
   // get a generic user from the database
   async getUser(email) {
-    results = this.execute(`SELECT * FROM users WHERE email = $1`, [email]);
+    let results = await this.execute(`SELECT * FROM users WHERE email = $1`, [email]);
     if (results.rows.length == 0) {
       return null;
     }
 
-    account_type = results.rows[0].account_type;
+    let account_type = results.rows[0].account_type;
     if (account_type == "student") {
       return new Student(results.rows[0]);
     } else if (account_type == "teacher") {
@@ -58,24 +58,19 @@ class BaseDB {
   }
 
   // login a generic user using email and password
-  // async login(email, password) {
-  //   user = await this.getUser(email);
+  async login(email, password) {
+    let user = await this.getUser(email);
 
-  //   // check password
-  //   if (password != user.password) {
-  //     return false;
-  //   }
+    if (user == null) {
+      return false;
+    }
 
-  //   if (user.account_type == "admin") {
-  //     return "adminPage.html";
-  //   } else if (user.account_type == "parent") {
-  //     return "parentPage.html";
-  //   } else if (user.account_type == "teacher") {
-  //     return "teacherPage.html";
-  //   } else {
-  //     return "studentPage.html";
-  //   }
-  // }
+    if (password != user.password) {
+      return false;
+    }
+
+    return true;
+  }
 }
 
 module.exports = {

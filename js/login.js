@@ -1,27 +1,20 @@
-// not working
+const { ipcRenderer } = require("electron");
+const { ClassyDB } = require("../db/classydb.js");
 
-const db = require('./db/classydb.js');
+const client = new ClassyDB();
 
-// called from index.html when user logs in with email and password
-function login() {
-  const client = new db.ClassyDB();
-  
-  // get email and password from form
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
+// Authenticate user and create a new session
+const login = document.getElementById("login");
 
-  // check if email and password are valid
-  client.login(email, password, (err, result) => {
-    if (err) {
-      console.log(err);
-      return;
-    }
-    if (result) {
-      // if email and password are valid, redirect to home page
-      window.location.href = "pages/" + result;
-    } else {
-      // if email and password are invalid, show error message
-      document.getElementById('error-message').innerHTML = 'Invalid email or password';
-    }
-  });
-}
+login.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (await client.login(email, password) == false) {
+    ipcRenderer.invoke("showDialog", "Invalid credentials");
+  } else {
+    ipcRenderer.send("authenticated");
+  }
+});

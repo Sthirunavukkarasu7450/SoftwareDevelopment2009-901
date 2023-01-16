@@ -1,44 +1,38 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="mytheme">
-    <head>
-        <meta charset="UTF-8">
-        <title>Classy</title>
-        <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
-        <link href="../dist/output.css" rel="stylesheet">
-        <script src="../pages.js"></script>
-    </head>
-    <body class="font-Raleway">
-        <div class="grid grid-rows-3 md:grid-rows-12 gap-4">
-            <div class="col-span-1 md:col-span-12"></div>
-            <div class="col-span-1 md:col-span-4"></div>
-            <div class="italic text-9xl hero-content text-center text-primary md:col-span-4 font-bold">
-                CLASSY
+  <head>
+    <meta charset="UTF-8" />
+    <title>Classy</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link href="../dist/output.css" rel="stylesheet" />
+    <!-- <script src="../pages.js"></script> -->
+  </head>
+  <body class="font-Raleway">
+    <div class="grid grid-rows-3 md:grid-rows-12 gap-4">
+      <div class="col-span-1 md:col-span-12"></div>
+      <div class="col-span-1 md:col-span-4"></div>
+      <div class="italic text-9xl hero-content text-center text-primary md:col-span-4 font-bold">CLASSY</div>
+      <div class="col-span-1 md:col-span-4"></div>
+      <div class="col-span-1 md:col-span-2"></div>
+      <div class="grid grid-cols-8 md:col-span-8 gap-4 border-4 border-primary-focus rounded-3xl bg-base-content">
+        <form id="login" class="w-full text-center col-span-8">
+          <div class="text-6xl text-primary text-center w-full">Sign-In</div>
+          <div>
+            <div class="text-3xl text-neutral-content w-full p-3 md:p-5">
+              <label for="email" class="text-right"> Email: </label>
+              <input type="email" name="email" id="email" required />
             </div>
-            <div class="col-span-1 md:col-span-4"></div>
-            <div class="col-span-1 md:col-span-2"></div>
-            <div class="grid grid-cols-8 md:col-span-8 gap-4 border-4 border-primary-focus rounded-3xl bg-base-content">
-                <form action="" class="w-full text-center col-span-8">
-                    <div class="text-6xl text-primary text-center w-full">
-                        Sign-In
-                    </div>
-                    <div>
-                        <div class="text-3xl text-neutral-content w-full p-3 md:p-5">
-                            <label for="email" class="text-right">
-                                Email:
-                            </label>
-                            <input type="email" name="email" id="email" required>
-                        </div>
-                        <div class="text-3xl text-neutral-content w-full p-3 md:p-5">
-                            <label for="password" class="text-right">
-                                Password:
-                            </label>
-                            <input type="password" name="password" id="password" required>
-                        </div>
-                    </div>
-                    <input type="submit" value="">
-                </form>
+            <div class="text-3xl text-neutral-content w-full p-3 md:p-5">
+              <label for="password" class="text-right"> Password: </label>
+              <input type="password" name="password" id="password" required />
             </div>
-            <div class="col-span-1 md:col-span-2"></div>
-        </div>
-    </body>
+          </div>
+          <input type="submit" value="" />
+        </form>
+      </div>
+      <div class="col-span-1 md:col-span-2"></div>
+    </div>
+  </body>
+
+  <script src="../js/login.js"></script>
 </html>
