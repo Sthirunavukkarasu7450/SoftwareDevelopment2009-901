@@ -79,7 +79,14 @@ class BaseDB {
 
     // get the courses for the teacher
     let courses = await this.execute(`SELECT * FROM courses WHERE teacher_id = $1`, [row.user_id]);
-    courses = courses.rows.map((course) => new Course(course));
+    courses = courses.rows.map((row) => new Course(row));
+
+    // for each course, get the students from student_ids and store them in the course as students list
+    for (let course of courses) {
+      let students = await this.execute(`SELECT * FROM users WHERE user_id = ANY($1)`, [course.student_ids]);
+      students = students.rows.map((row) => new Student(row));
+      course.students = students;
+    }
 
     return await new Teacher({ ...row, ...extra, courses });
   }

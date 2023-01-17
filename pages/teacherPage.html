@@ -73,14 +73,26 @@
     document.getElementById("schedule").src =
       "data:application/pdf;base64," + user.schedule + "#toolbar=0&navpanes=0&scrollbar=0";
 
-    console.log(user.courses);
     // make li for each course, append to ul
     const courses_list = document.getElementById("courses");
     user.courses.forEach((course) => {
       const li = document.createElement("li");
 
-      // course has course_name, student_grades, student_ids
+      // course has course_name, student_grades, student_ids, students
       li.innerHTML = course.course_name;
+
+      // make ul for each student, listing their name and grade
+      const students_list = document.createElement("ul");
+      course.students.forEach((student) => {
+        const student_li = document.createElement("li");
+        const student_name = student.first_name + " " + student.last_name;
+        const student_grade = course.student_grades[student.user_id] + "%";
+        student_li.innerHTML = student_name + " - " + student_grade;
+        students_list.appendChild(student_li);
+      });
+
+      li.appendChild(students_list);
+      li.appendChild(document.createElement("br"));
 
       courses_list.appendChild(li);
     });
