@@ -4,7 +4,7 @@ class Teacher extends User {
   constructor(row) {
     super(row);
     this.course_ids = row.course_ids;
-    this.schedule = row.schedule;
+    this.schedule = Buffer.from(row.schedule).toString('base64');
   }
 }
 
