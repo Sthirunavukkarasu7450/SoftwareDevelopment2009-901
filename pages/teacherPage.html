@@ -57,6 +57,6 @@
     // set user data to html
     document.getElementById("name").innerHTML = user.first_name + " " + user.last_name;
     document.getElementById("email").innerHTML = user.email;
-    document.getElementById("schedule").src = "data:application/pdf;base64," + user.schedule;
+    document.getElementById("schedule").src = "data:application/pdf;base64," + user.schedule + "#toolbar=0&navpanes=0&scrollbar=0";
   </script>
 </html>
