@@ -46,6 +46,19 @@
           </div>
         </div>
       </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">My Courses</h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <ul id="courses"></ul>
+          </div>
+        </div>
+      </div>
     </section>
   </body>
 
@@ -57,6 +70,19 @@
     // set user data to html
     document.getElementById("name").innerHTML = user.first_name + " " + user.last_name;
     document.getElementById("email").innerHTML = user.email;
-    document.getElementById("schedule").src = "data:application/pdf;base64," + user.schedule + "#toolbar=0&navpanes=0&scrollbar=0";
+    document.getElementById("schedule").src =
+      "data:application/pdf;base64," + user.schedule + "#toolbar=0&navpanes=0&scrollbar=0";
+
+    console.log(user.courses);
+    // make li for each course, append to ul
+    const courses_list = document.getElementById("courses");
+    user.courses.forEach((course) => {
+      const li = document.createElement("li");
+
+      // course has course_name, student_grades, student_ids
+      li.innerHTML = course.course_name;
+
+      courses_list.appendChild(li);
+    });
   </script>
 </html>
