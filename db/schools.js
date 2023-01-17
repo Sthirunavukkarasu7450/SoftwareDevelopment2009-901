@@ -16,7 +16,7 @@ class SchoolDB extends BaseDB {
 
   // get a school from the database
   async getSchool(name) {
-    results = this.execute(`SELECT * FROM schools WHERE name = $1`, [name]);
+    let results = await this.execute(`SELECT * FROM schools WHERE name = $1`, [name]);
     if (results.rows.length == 0) {
       return null;
     }

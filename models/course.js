@@ -5,6 +5,7 @@ class Course {
     this.teacher_id = row.teacher_id;
     this.student_ids = row.student_ids;
     this.student_grades = row.student_grades;
+    this.students = [];
   }
 }
 

@@ -5,6 +5,7 @@ const { CourseDB } = require("./courses");
 const { SchoolDB } = require("./schools");
 const { ParentDB } = require("./parents");
 const { StudentDB } = require("./students");
+const { TeacherDB } = require("./teachers");
 
 // helper function to combine multiple classes into one
 function Classes(bases) {
@@ -23,7 +24,7 @@ function Classes(bases) {
   return Bases;
 }
 
-class ClassyDB extends Classes([BaseDB, CourseDB, SchoolDB, ParentDB, StudentDB]) {
+class ClassyDB extends Classes([BaseDB, CourseDB, SchoolDB, ParentDB, StudentDB, TeacherDB]) {
   constructor() {
     super().connect();
   }

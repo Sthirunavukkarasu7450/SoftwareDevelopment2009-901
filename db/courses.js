@@ -13,8 +13,8 @@ class CourseDB extends BaseDB {
   }
 
   // get course from the database
-  async getCourse(course_name) {
-    results = this.execute(`SELECT * FROM courses WHERE course_name = $1`, [course_name]);
+  async getCourse(course_id) {
+    let results = await this.execute(`SELECT * FROM courses WHERE course_id = $1`, [course_id]);
     if (results.rows.length == 0) {
       return null;
     }

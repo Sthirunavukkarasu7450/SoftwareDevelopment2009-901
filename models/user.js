@@ -1,6 +1,7 @@
 // generic user class
 class User {
   constructor(row) {
+    this.user_id = row.user_id;
     this.account_type = row.account_type;
     this.last_name = row.last_name;
     this.first_name = row.first_name;
