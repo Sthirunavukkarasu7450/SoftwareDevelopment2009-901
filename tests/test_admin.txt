@@ -1,0 +1,4 @@
+Test admin login
+
+Email: tanderson@cvschools.org
+Password: password

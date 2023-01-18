@@ -1,0 +1,4 @@
+Test teacher login
+
+Email: mmiller@cvschools.org
+Password: password
