@@ -79,7 +79,7 @@
       const li = document.createElement("li");
 
       // course has course_name, student_grades, student_ids, students
-      li.innerHTML = course.course_name;
+      li.innerHTML = `<h2 class="card-title">${course.course_name}</h2>`;
 
       // make ul for each student, listing their name and grade
       const students_list = document.createElement("ul");
