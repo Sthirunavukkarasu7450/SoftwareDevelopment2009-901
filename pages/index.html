@@ -19,18 +19,18 @@
       <div class="grid grid-cols-8 md:col-span-8 gap-4 border-4 border-primary-focus rounded-3xl bg-base-content p-3 md:p-5">
         <form id="login" class="w-full text-center col-span-8 p-3 md:p-5">
           <div class="text-6xl text-primary text-center w-full">Sign-In</div>
-          <div class="grid grid-cols-12">
-            <div class="text-3xl text-neutral-content w-full p-3 md:p-5 col-span-12 grid grid-cols-12">
-                <label for="email" class="text-right col-span-2 p-3 md:p-5">
+          <div class="">
+            <div class="text-3xl text-neutral-content w-full p-3 md:p-5 grid grid-cols-12">
+                <label for="email" class="text-left col-span-1">
                     Email:
                 </label>
-                <input type="email" name="email" id="email" required class="col-span-10 w-full rounded-2xl">
+                <input type="email" name="email" id="email" required class="col-span-11 w-full rounded-2xl text-secondary pt-2 pb-2">
             </div>
-            <div class="text-3xl text-neutral-content w-full p-3 md:p-5 col-span-12 grid grid-cols-12">
-                <label for="password" class="text-right col-span-2 p-3 md:p-5">
+            <div class="text-3xl text-neutral-content w-full p-3 md:p-5 grid grid-cols-12">
+                <label for="password" class="text-left col-span-1">
                     Password:
                 </label>
-                <input type="password" name="password" id="password" required class="col-span-10 w-full rounded-2xl">
+                <input type="password" name="password" id="password" required class="col-span-11 w-full rounded-2xl text-secondary pt-2 pb-2">
             </div>
         </div>
         <button type="submit" class="text-primary border-4 border-secondary p-3 md:p-5 text-3xl rounded-3xl">Log-In</button>
