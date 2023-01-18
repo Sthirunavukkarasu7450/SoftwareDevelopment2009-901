@@ -27,10 +27,7 @@
           </div>
         </div>
         <div class="card">
-          <div class="card-body">
-            <h2 id="name"></h2>
-            <h2 id="email"></h2>
-          </div>
+          <div id="profile" class="card-body"></div>
         </div>
       </div>
 
@@ -62,14 +59,15 @@
     </section>
   </body>
 
+  <script src="../js/displayUser.js"></script>
   <script>
     // get user data from local storage
     const user = JSON.parse(localStorage.getItem("user"));
     console.log(user);
 
     // set user data to html
-    document.getElementById("name").innerHTML = user.first_name + " " + user.last_name;
-    document.getElementById("email").innerHTML = user.email;
+    const profile = document.getElementById("profile");
+    profile.innerHTML = displayUser(user);
     document.getElementById("schedule").src =
       "data:application/pdf;base64," + user.schedule + "#toolbar=0&navpanes=0&scrollbar=0";
 
