@@ -1,0 +1,7 @@
+Test student login
+
+Email: 24jdoe@cvsdstudents.org
+Password: password
+
+Email: 25jdoe@cvsdstudents.org
+Password: password

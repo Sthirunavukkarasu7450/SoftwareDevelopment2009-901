@@ -1,0 +1,7 @@
+Test parent login
+
+Email: freddoe@gmail.com
+Password: password
+
+Email: susandoe@gmail.com
+Password: password

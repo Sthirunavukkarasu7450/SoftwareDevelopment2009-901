@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Classy</title>
+    <title>Student | Classy</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <link href="../dist/output.css" rel="stylesheet" />
   </head>
@@ -28,22 +28,97 @@
           </div>
         </div>
         <div class="card">
+          <div id="profile" class="card-body"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="card">
           <div class="card-body">
-            <h2 id="name"></h2>
-            <h2 id="email"></h2>
+            <h2 class="card-title">My Supervisors</h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">Grade Principal</h2>
+            <p id="grade_principal"></p>
+            <h2 class="card-title">Counselor</h2>
+            <p id="counselor"></p>
+            <h2 class="card-title">Homeroom Teacher</h2>
+            <p id="homeroom_teacher"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">My Portfolio</h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <iframe id="portfolio" src="" width="100%" height="500px"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">My Schedule</h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <iframe id="schedule" src="" width="100%" height="500px"></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">My Courses</h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <ul id="courses"></ul>
           </div>
         </div>
       </div>
     </section>
   </body>
 
+  <script src="../js/displayStudent.js"></script>
+  <script src="../js/displaySupervisor.js"></script>
   <script>
     // get user data from local storage
     const user = JSON.parse(localStorage.getItem("user"));
     console.log(user);
 
     // set user data to html
-    document.getElementById("name").innerHTML = user.first_name + " " + user.last_name;
-    document.getElementById("email").innerHTML = user.email;
+    const profile = document.getElementById("profile");
+    profile.innerHTML = displayStudent(user);
+    document.getElementById("portfolio").src =
+      "data:application/pdf;base64," + user.portfolio + "#toolbar=0&navpanes=0&scrollbar=0";
+    document.getElementById("schedule").src =
+      "data:application/pdf;base64," + user.schedule + "#toolbar=0&navpanes=0&scrollbar=0";
+
+    // set supervisor data to html
+    document.getElementById("grade_principal").innerHTML = displaySupervisor(user.grade_principal);
+    document.getElementById("counselor").innerHTML = displaySupervisor(user.counselor);
+    document.getElementById("homeroom_teacher").innerHTML = displaySupervisor(user.homeroom_teacher);
+
+    // make li for each course, append to ul
+    const courses_list = document.getElementById("courses");
+    user.courses.forEach((course) => {
+      const li = document.createElement("li");
+
+      // course has course_name, student_grades, student_ids, students
+      li.innerHTML = course.course_name;
+      courses_list.appendChild(li);
+    });
   </script>
 </html>

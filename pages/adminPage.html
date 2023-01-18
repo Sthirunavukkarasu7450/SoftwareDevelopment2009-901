@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <title>Hello World!</title>
+    <title>Admin | Classy</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
     <link href="../dist/output.css" rel="stylesheet" />
   </head>
@@ -27,22 +27,44 @@
           </div>
         </div>
         <div class="card">
+          <div id="profile" class="card-body"></div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="card">
           <div class="card-body">
-            <h2 id="name"></h2>
-            <h2 id="email"></h2>
+            <h2 class="card-title">User Directory</h2>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <ul id="all_users"></ul>
           </div>
         </div>
       </div>
     </section>
   </body>
 
+  <script src="../js/displayUser.js"></script>
   <script>
     // get user data from local storage
     const user = JSON.parse(localStorage.getItem("user"));
     console.log(user);
 
     // set user data to html
-    document.getElementById("name").innerHTML = user.first_name + " " + user.last_name;
-    document.getElementById("email").innerHTML = user.email;
+    const profile = document.getElementById("profile");
+    profile.innerHTML = displayUser(user);
+
+    // set users table to html
+    const all_users = user.all_users;
+    const all_users_list = document.getElementById("all_users");
+
+    for (let i = 0; i < all_users.length; i++) {
+      const user = all_users[i];
+      const li = document.createElement("li");
+      li.innerHTML = displayUser(user);
+      all_users_list.appendChild(li);
+    }
   </script>
 </html>
