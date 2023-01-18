@@ -33,9 +33,21 @@
           </div>
         </div>
       </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div class="card">
+          <div class="card-body">
+            <h2 class="card-title">User Directory</h2>
+          </div>
+        </div>
+        <div class="card">
+          <ul id="all_users"></ul>
+        </div>
+      </div>
     </section>
   </body>
 
+  <script src="../js/displayUser.js"></script>
   <script>
     // get user data from local storage
     const user = JSON.parse(localStorage.getItem("user"));
@@ -44,5 +56,16 @@
     // set user data to html
     document.getElementById("name").innerHTML = user.first_name + " " + user.last_name;
     document.getElementById("email").innerHTML = user.email;
+
+    // set users table to html
+    const all_users = user.all_users;
+    const all_users_list = document.getElementById("all_users");
+
+    for (let i = 0; i < all_users.length; i++) {
+      const user = all_users[i];
+      const li = document.createElement("li");
+      li.innerHTML = displayUser(user);
+      all_users_list.appendChild(li);
+    }
   </script>
 </html>

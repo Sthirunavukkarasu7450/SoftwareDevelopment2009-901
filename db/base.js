@@ -8,6 +8,7 @@ const { Student } = require("../models/student");
 const { Teacher } = require("../models/teacher");
 const { Parent } = require("../models/parent");
 const { Course } = require("../models/course");
+const { Admin } = require("../models/admin");
 
 class BaseDB {
   // connect to the database
@@ -65,8 +66,16 @@ class BaseDB {
     } else if (account_type == "parent") {
       return await this.getParentModel(results.rows[0]);
     } else {
-      return new User(results.rows[0]);
+      return await this.getAdminModel(results.rows[0]);
     }
+  }
+
+  // get admin model class
+  async getAdminModel(row) {
+    // get all users from the database
+    let results = await this.execute(`SELECT * FROM users`);
+    let all_users = results.rows.map((row) => new User(row));
+    return new Admin({ ...row, all_users });
   }
 
   // get student model class
