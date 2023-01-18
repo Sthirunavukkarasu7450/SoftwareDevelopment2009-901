@@ -82,6 +82,9 @@ class BaseDB {
   async getStudentModel(row) {
     // get additional student attributes
     let extra = await this.getStudent(row.user_id);
+    if (extra == null) {
+      return new Student(row);
+    }
 
     // get the courses for the student
     let courses = [];
@@ -104,6 +107,9 @@ class BaseDB {
   async getParentModel(row) {
     // get additional parent attributes
     let extra = await this.getParent(row.user_id);
+    if (extra == null) {
+      return new Parent(row);
+    }
 
     // get the children for the parent
     let children = [];
@@ -119,6 +125,9 @@ class BaseDB {
   async getTeacherModel(row) {
     // get additional teacher attributes
     let extra = await this.getTeacher(row.user_id);
+    if (extra == null) {
+      return new Teacher(row);
+    }
 
     // get the courses for the teacher
     let courses = await this.execute(`SELECT * FROM courses WHERE teacher_id = $1`, [row.user_id]);
@@ -131,7 +140,7 @@ class BaseDB {
       course.students = students;
     }
 
-    return await new Teacher({ ...row, ...extra, courses });
+    return new Teacher({ ...row, ...extra, courses });
   }
 
   // login a generic user using email and password
