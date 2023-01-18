@@ -39,9 +39,20 @@ class BaseDB {
     );
   }
 
-  // get a generic user from the database
-  async getUser(email) {
+  // get a generic user by email from the database
+  async getUserByEmail(email) {
     let results = await this.execute(`SELECT * FROM users WHERE email = $1`, [email]);
+    return await this.convertUser(results);
+  }
+
+  // get a generic user by id from the database
+  async getUserByID(user_id) {
+    let results = await this.execute(`SELECT * FROM users WHERE user_id = $1`, [user_id]);
+    return await this.convertUser(results);
+  }
+
+  // convert generic user to specific model class
+  async convertUser(results) {
     if (results.rows.length == 0) {
       return null;
     }
@@ -69,7 +80,15 @@ class BaseDB {
   async getParentModel(row) {
     // get additional parent attributes
     let extra = await this.getParent(row.user_id);
-    return new Parent({ ...row, ...extra });
+
+    // get the children for the parent
+    let children = [];
+    for (let child_id of extra.children_ids) {
+      let child = await this.getUserByID(child_id);
+      children.push(child);
+    }
+
+    return new Parent({ ...row, ...extra, children });
   }
 
   // get teacher model class
@@ -93,7 +112,7 @@ class BaseDB {
 
   // login a generic user using email and password
   async login(email, password) {
-    let user = await this.getUser(email);
+    let user = await this.getUserByEmail(email);
     if (user && user.password == password) {
       return user;
     }

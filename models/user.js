@@ -5,7 +5,7 @@ class User {
     this.account_type = row.account_type;
     this.last_name = row.last_name;
     this.first_name = row.first_name;
-    this.birthday = row.birthday;
+    this.birthday = row.birthday.toISOString().split('T')[0];  // convert to yyyy-mm-dd
     this.address = row.address;
     this.email = row.email;
     this.password = row.password;
