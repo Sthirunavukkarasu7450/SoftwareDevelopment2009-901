@@ -22,6 +22,7 @@ function createWindow() {
       contextIsolation: false,
       enableRemoteModule: true,
     },
+    icon: __dirname + '/img/logo.ico'
   });
   win.maximize();
 
