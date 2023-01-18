@@ -85,9 +85,11 @@ class BaseDB {
 
     // get the courses for the student
     let courses = [];
-    for (let course_id of extra.course_ids) {
-      let course = await this.getCourse(course_id);
-      courses.push(course);
+    if (extra.course_ids) {
+      for (let course_id of extra.course_ids) {
+        let course = await this.getCourse(course_id);
+        courses.push(course);
+      }
     }
 
     // get supervisors for the student
