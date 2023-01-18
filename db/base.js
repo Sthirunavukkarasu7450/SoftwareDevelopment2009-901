@@ -82,7 +82,20 @@ class BaseDB {
   async getStudentModel(row) {
     // get additional student attributes
     let extra = await this.getStudent(row.user_id);
-    return new Student({ ...row, ...extra });
+
+    // get the courses for the student
+    let courses = [];
+    for (let course_id of extra.course_ids) {
+      let course = await this.getCourse(course_id);
+      courses.push(course);
+    }
+
+    // get supervisors for the student
+    let grade_principal = await this.getUserByID(extra.grade_principal_id);
+    let counselor = await this.getUserByID(extra.counselor_id);
+    let homeroom_teacher = await this.getUserByID(extra.homeroom_teacher_id);
+
+    return new Student({ ...row, ...extra, courses, grade_principal, counselor, homeroom_teacher });
   }
 
   // get parent model class
