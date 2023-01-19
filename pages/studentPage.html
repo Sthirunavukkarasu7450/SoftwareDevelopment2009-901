@@ -79,7 +79,7 @@
       <div class="grid grid-cols-2 gap-4">
         <div class="card">
           <div class="card-body">
-            <h2 class="card-title">My Courses</h2>
+            <h2 class="card-title">My Grades</h2>
           </div>
         </div>
         <div class="card">
@@ -93,6 +93,7 @@
 
   <script src="../js/displayStudent.js"></script>
   <script src="../js/displaySupervisor.js"></script>
+  <script src="../js/displayStudentCourse.js"></script>
   <script>
     // get user data from local storage
     const user = JSON.parse(localStorage.getItem("user"));
@@ -117,7 +118,7 @@
       const li = document.createElement("li");
 
       // course has course_name, student_grades, student_ids, students
-      li.innerHTML = course.course_name;
+      li.innerHTML = displayStudentCourse(user, course);
       courses_list.appendChild(li);
     });
   </script>
